@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Header from "./components/header/Header";
+import Main from "./components/main/Main";
 
 const Wrapper = styled('div')`
 height: 100vh;
@@ -11,6 +12,7 @@ export default function Home() {
     return (
         <Wrapper>
             <Header />
+            <Main />
         </Wrapper>
     )
 }
