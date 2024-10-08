@@ -1,10 +1,15 @@
 import { createGlobalStyle } from "styled-components";
+import { colors } from "./styleConstants";
 
 export const GlobalStyles = createGlobalStyle`
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+body {
+    background-color: ${colors.grayLight};
 }
 
 a {
@@ -21,6 +26,12 @@ ul {
 input {
     all: unset;
     box-sizing: border-box;
+
+    &::placeholder {
+        color: inherit;
+        font-size: inherit;
+        font-weight: inherit;
+    }
 }
 
 button {
