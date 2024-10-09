@@ -12,6 +12,7 @@ export const font = {
         title: "20px",
         subtitle: "16px",
         main: "14px",
+        small: "12px"
     },
 
     weights: {
