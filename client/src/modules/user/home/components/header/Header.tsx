@@ -5,6 +5,7 @@ import Profile from "./Profile";
 import Logo from "./Logo";
 
 const Wrapper = styled('header')`
+padding: 0 10px;
 background-color: ${colors.whiteTotal};
 border-bottom: ${border.styles.grayMainSmall};
 `;
@@ -17,6 +18,7 @@ justify-content: space-between;
 `;
 
 export default function Header() {
+
     return (
         <Wrapper>
             <Container>

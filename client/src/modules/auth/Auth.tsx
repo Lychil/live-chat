@@ -3,6 +3,7 @@ import AuthSwaper from "./components/AuthSwaper";
 import { AuthForm, AuthWrapper } from "./styles";
 
 export default function Auth() {
+
     return (
         <AuthWrapper>
             <AuthForm>
