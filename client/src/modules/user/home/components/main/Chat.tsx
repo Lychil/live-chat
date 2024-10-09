@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../../../../common/styles/styleConstants";
+import InputMessage from "./InputMessage";
 
 const Wrapper = styled('div')`
 height: 100%;
@@ -12,16 +13,11 @@ flex-grow: 1;
 background-color: ${colors.grayDark};
 `;
 
-const InputMessage = styled('div')`
-height: 50px;
-background-color: ${colors.whiteTotal};
-`;
-
 export default function Chat() {
     return (
         <Wrapper>
             <Messages></Messages>
-            <InputMessage></InputMessage>
+            <InputMessage />
         </Wrapper>
     )
 }
