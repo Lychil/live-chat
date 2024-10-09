@@ -5,6 +5,7 @@ const Wrapper = styled('div')`
 display: flex;
 padding: 5px 0;
 column-gap: 10px;
+background-color: ${colors.whiteTotal};
 border-bottom: ${border.styles.grayDarkSmall};
 `;
 
@@ -29,13 +30,13 @@ font-weight: ${font.weights.medium};
 color: ${colors.grayDark};
 `;
 
-export default function UserItem() {
+export default function UserItem({name, message = ''}: {name: string, message?: string}) {
     return (
         <Wrapper>
             <Icon></Icon>
             <Info>
-                <Author>User</Author>
-                <LastMessage>Last message</LastMessage>
+                <Author>{name}</Author>
+                <LastMessage>{message}</LastMessage>
             </Info>
         </Wrapper>
     )
