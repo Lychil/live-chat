@@ -9,6 +9,7 @@ grid-template-rows: auto 1fr;
 `;
 
 export default function Home() {
+
     return (
         <Wrapper>
             <Header />

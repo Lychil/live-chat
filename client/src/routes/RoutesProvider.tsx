@@ -3,9 +3,10 @@ import Auth from "../modules/auth/Auth";
 import Reg from "../modules/auth/Reg";
 import Login from "../modules/auth/Login";
 import Home from "../modules/user/home/Home";
+import { checkIsAuth } from "../store/reducers/user/userApi";
 
 export default function RoutesProvider() {
-    const isAuthorized = true;
+    const isAuthorized = checkIsAuth();
 
     const authorizedRouter = createBrowserRouter(
         createRoutesFromElements(
