@@ -8,7 +8,7 @@ class SearchController {
         else {
 
             const cookies = req.cookies;
-            const users = await db.query('SELECT name FROM users WHERE name LIKE $1 AND id != $2;', [`${str}%`, cookies.auth.id]);
+            const users = await db.query('SELECT id, name FROM users WHERE name LIKE $1 AND id != $2;', [`${str}%`, cookies.auth.id]);
             res.json(users.rows);
         }
     }
