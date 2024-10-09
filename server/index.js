@@ -1,5 +1,6 @@
 const express = require('express');
 const usersRouter = require("./routes/users.routes");
+const searchRouter = require("./routes/search.routes");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
@@ -16,5 +17,6 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.json()) // express по умолчанию не может распарсить строку
 app.use('/api', usersRouter);
+app.use('/api', searchRouter);
 
 app.listen(PORT, () => console.log('server is ready!'));
