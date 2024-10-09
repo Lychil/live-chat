@@ -1,4 +1,5 @@
 const express = require('express');
+const chatsRouter = require("./routes/chats.routes");
 const usersRouter = require("./routes/users.routes");
 const searchRouter = require("./routes/search.routes");
 const cors = require("cors");
@@ -18,5 +19,6 @@ app.use(cors(corsOptions));
 app.use(express.json()) // express по умолчанию не может распарсить строку
 app.use('/api', usersRouter);
 app.use('/api', searchRouter);
+app.use('/api', chatsRouter);
 
 app.listen(PORT, () => console.log('server is ready!'));

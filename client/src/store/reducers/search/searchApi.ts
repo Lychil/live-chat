@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl } from "../../../store/baseUrl";
 
 export interface ISearchUsers {
+    id: number,
     name: string,
-    password: string
 }
 
 export const searchApi = createApi({
