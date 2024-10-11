@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useState } from "react";
 import styled from "styled-components";
 import UserItem from "./UserItem";
 import { useGetSearchUsersQuery } from "../../../../../store/reducers/search/searchApi";
@@ -41,10 +40,7 @@ transform: translateY(100%);
 
 const WrapperUser = styled('div')``;
 
-const WrapperUser = styled('div')``;
-
 export default function Search() {
-    const [createChat] = useCreateChatMutation();
     const [createChat] = useCreateChatMutation();
     const [value, setValue] = useState('');
     const { data } = useGetSearchUsersQuery(value);
