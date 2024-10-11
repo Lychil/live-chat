@@ -1,12 +1,19 @@
 import styled from "styled-components";
-import { border, colors, font } from "../../../../../common/styles/styleConstants";
+import { border, colors, font, transition } from "../../../../../common/styles/styleConstants";
+import { useGetUserInfoQuery } from "../../../../../store/reducers/user/userApi";
 
 const Wrapper = styled('div')`
+cursor: pointer;
 display: flex;
 padding: 5px 0;
 column-gap: 10px;
 background-color: ${colors.whiteTotal};
 border-bottom: ${border.styles.grayDarkSmall};
+transition: ${transition.fast};
+
+&:hover {
+    background-color: ${colors.grayLight};
+}
 `;
 
 const Icon = styled('div')`
@@ -24,19 +31,14 @@ font-weight: ${font.weights.semiBold};
 font-size: ${font.sizes.main};
 `;
 
-const LastMessage = styled('p')`
-font-size: ${font.sizes.small};
-font-weight: ${font.weights.medium};
-color: ${colors.grayDark};
-`;
+export default function UserItem({id}: {id: number}) {
+    const {data: user} = useGetUserInfoQuery(id);
 
-export default function UserItem({name, message = ''}: {name: string, message?: string}) {
     return (
         <Wrapper>
             <Icon></Icon>
             <Info>
-                <Author>{name}</Author>
-                <LastMessage>{message}</LastMessage>
+                <Author>{user && user.name}</Author>
             </Info>
         </Wrapper>
     )
