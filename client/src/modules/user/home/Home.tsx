@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Header from "./components/header/Header";
 import Main from "./components/main/Main";
+import Header from "./components/header/Header";
 
 const Wrapper = styled('div')`
 height: 100vh;
