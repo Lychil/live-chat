@@ -41,11 +41,18 @@ export const userApi = createApi({
                 url: "users/check",
             }),
             providesTags: ["LOGIN"]
-        })
+        }),
+        getUserInfo: builder.query<IUser, number>({
+            query: (id: number) => ({
+                method: "GET",
+                url: `users/info?id=${id}`,
+            }),
+        }),
     }),
 });
 
 export const {
+    useGetUserInfoQuery,
     useIsAuthQuery,
     useCreateUserMutation,
     useLoginMutation,

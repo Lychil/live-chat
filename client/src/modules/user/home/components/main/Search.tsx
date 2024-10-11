@@ -2,9 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import UserItem from "./UserItem";
 import { useGetSearchUsersQuery } from "../../../../../store/reducers/search/searchApi";
+import { useCreateChatMutation } from "../../../../../store/reducers/chats/chatsApi";
 import { border, colors, font } from "../../../../../common/styles/styleConstants";
 import searchImg from "../../../../../common/images/svg/search.svg";
-import { useCreateChatMutation } from "../../../../../store/reducers/chats/chatsApi";
 
 const Wrapper = styled('div')`
 position: relative;
@@ -54,7 +54,7 @@ export default function Search() {
                     {
                         data.map((elem, i) => (
                             <WrapperUser onClick={() => createChat(elem.id)} key={i}>
-                                <UserItem name={elem.name} />
+                                <UserItem id={elem.id} />
                             </WrapperUser>
                         ))
                     }

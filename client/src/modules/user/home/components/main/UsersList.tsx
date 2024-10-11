@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import UserItem from "./UserItem";
+import { useGetChatsQuery } from "../../../../../store/reducers/chats/chatsApi";
 
 const Wrapper = styled('div')``;
 
-const list = [1, 2, 3, 4, 5];
-
 export default function UsersList() {
+    const {data: chats, isLoading} = useGetChatsQuery();
+
+    if (isLoading) <div>isLoading</div>;
+
     return (
         <Wrapper>
             {
-                list.map((elem) => <UserItem key={elem} />)
+                chats && chats.map((elem) => <UserItem id={elem.buddy} key={elem.id} />)
             }
         </Wrapper>
     )

@@ -15,7 +15,7 @@ class UsersController {
             [name, password]
         );
 
-        const user = {name: newUser.rows[0].name};
+        const user = { name: newUser.rows[0].name };
 
         res.cookie('auth', user, {
             maxAge: 9000000000, // Время жизни в миллисекундах
@@ -29,8 +29,8 @@ class UsersController {
     async isAuth(req, res) {
         const cookies = req.cookies; // Все куки
         if (cookies.auth && cookies.auth.name) {
-            res.json({name: cookies.auth.name})
-        } else {res.json({name: null});}
+            res.json({ name: cookies.auth.name })
+        } else { res.json({ name: null }); }
     }
 
     async isUser(req, res) {
@@ -59,13 +59,19 @@ class UsersController {
     }
 
     async Exit(req, res) {
-        res.cookie('auth', {name: null}, {
+        res.cookie('auth', { name: null }, {
             maxAge: 900000000, // Время жизни в миллисекундах
             httpOnly: true, // Доступно только через HTTP(S), не доступно через JavaScript
             secure: process.env.NODE_ENV === 'production', // Использовать secure только в продакшене
             sameSite: 'Strict', // Защита от CSRF
         });
-        return res.json({name: null});
+        return res.json({ name: null });
+    }
+
+    async getInfo(req, res) {
+        const id = req.query.id;
+        const user = await db.query('SELECT name FROM users WHERE id = $1;', [id]);
+        res.json(user.rows[0]);
     }
 }
 
