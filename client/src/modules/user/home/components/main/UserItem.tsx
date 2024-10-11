@@ -1,13 +1,19 @@
 import styled from "styled-components";
-import { border, colors, font } from "../../../../../common/styles/styleConstants";
+import { border, colors, font, transition } from "../../../../../common/styles/styleConstants";
 import { useGetUserInfoQuery } from "../../../../../store/reducers/user/userApi";
 
 const Wrapper = styled('div')`
+cursor: pointer;
 display: flex;
 padding: 5px 0;
 column-gap: 10px;
 background-color: ${colors.whiteTotal};
 border-bottom: ${border.styles.grayDarkSmall};
+transition: ${transition.fast};
+
+&:hover {
+    background-color: ${colors.grayLight};
+}
 `;
 
 const Icon = styled('div')`
