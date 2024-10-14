@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from "styled-components"
 import { border, colors, font, transition } from "../../../../../common/styles/styleConstants";
 import { useGetUserInfoQuery } from "../../../../../store/reducers/user/userApi";
-import { useActions } from "../../../../../store/actions";
+import { useCreateChatMutation } from "../../../../../store/reducers/chats/chatsApi";
 
 const Wrapper = styled('div')`
 cursor: pointer;
@@ -25,23 +25,20 @@ border-radius: ${border.radius.circle};
 background-color: ${colors.grayDark};
 `;
 
-const Info = styled('div')``;
-
-const Author = styled('p')`
+const User = styled('p')`
+margin: auto 0;
 font-weight: ${font.weights.semiBold};
 font-size: ${font.sizes.main};
 `;
 
-export default function UserItem({userId, chatId}: {userId: number, chatId: number}) {
-    const {data: user} = useGetUserInfoQuery(userId);
-    const { setChatId } = useActions();
+export default function SearchItem({ id }: { id: number }) {
+    const { data: user } = useGetUserInfoQuery(id);
+    const [createChat] = useCreateChatMutation();
 
     return (
-        <Wrapper onClick={() => setChatId(chatId)}>
+        <Wrapper onClick={() => createChat(id)}>
             <Icon></Icon>
-            <Info>
-                <Author>{user && user.name}</Author>
-            </Info>
+            <User>{user && user.name}</User>
         </Wrapper>
     )
 }

@@ -37,11 +37,18 @@ transition: ${transition.fast};
 }
 `;
 
-export default function InputMessage() {
+interface InputMessageProps {
+    value: string,
+    change: (e: React.ChangeEvent<HTMLInputElement>) => void,
+    click: () => void
+}
+
+export default function InputMessage({value, change, click}: InputMessageProps) {
+
     return (
         <Wrapper>
-            <Input placeholder="Введите сообщение..." />
-            <Button>Send</Button>
+            <Input value={value} onChange={change} placeholder="Введите сообщение..." />
+            <Button onClick={click}>Отправить</Button>
         </Wrapper>
     )
 }
