@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useState } from "react";
 import styled from "styled-components";
-import UserItem from "./UserItem";
 import { useGetSearchUsersQuery } from "../../../../../store/reducers/search/searchApi";
-import { useCreateChatMutation } from "../../../../../store/reducers/chats/chatsApi";
 import { border, colors, font } from "../../../../../common/styles/styleConstants";
 import searchImg from "../../../../../common/images/svg/search.svg";
+import SearchItem from "./SearchItem";
 
 const Wrapper = styled('div')`
 position: relative;
@@ -39,13 +37,7 @@ border: ${border.styles.grayDarkSmall};
 transform: translateY(100%);
 `;
 
-const WrapperUser = styled('div')``;
-
-const WrapperUser = styled('div')``;
-
 export default function Search() {
-    const [createChat] = useCreateChatMutation();
-    const [createChat] = useCreateChatMutation();
     const [value, setValue] = useState('');
     const { data } = useGetSearchUsersQuery(value);
 
@@ -56,11 +48,7 @@ export default function Search() {
             {data && data.length !== 0 ?
                 <List>
                     {
-                        data.map((elem, i) => (
-                            <WrapperUser onClick={() => createChat(elem.id)} key={i}>
-                                <UserItem id={elem.id} />
-                            </WrapperUser>
-                        ))
+                        data.map((elem) => <SearchItem id={elem.id} key={elem.id} />)
                     }
                 </List>
                 : null

@@ -11,3 +11,11 @@ CREATE TABLE chats (
     FOREIGN KEY (user_id) REFERENCES users (id),
     FOREIGN KEY (buddy) REFERENCES users (id)
 );
+
+CREATE TABLE messages (
+    id SERIAL PRIMARY KEY,
+    message VARCHAR(255),
+    user_id INTEGER,
+    chat_id INTEGER,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
